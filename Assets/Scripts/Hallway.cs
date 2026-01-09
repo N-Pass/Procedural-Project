@@ -32,7 +32,7 @@ public class Hallway
         set => endDirection = value; 
     }
 
-    public Vector2Int Startposition
+    public Vector2Int StartPosition
     {
         get => startPosition;
         set => startPosition = value;
