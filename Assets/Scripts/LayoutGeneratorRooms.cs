@@ -14,7 +14,7 @@ public class LayoutGeneratorRooms : MonoBehaviour
     [SerializeField] private GameObject levelLayoutDisplay;
     [SerializeField] private List<Hallway> openDoorways;
 
-    System.Random random;
+    private System.Random random;
 
     [ContextMenu("Generate Level layout")]
     public void GenerateLevel()
@@ -55,12 +55,13 @@ public class LayoutGeneratorRooms : MonoBehaviour
         layoutTexture.Reinitialize(width, length);
         levelLayoutDisplay.transform.localScale = new Vector3(width, length, 1);
         layoutTexture.FillWithColor(Color.black);
-        layoutTexture.DrawRectangle(roomCandidateRect, Color.cyan);
+        layoutTexture.DrawRectangle(roomCandidateRect, Color.blue);
 
-        foreach (Hallway hallway in openDoorways)
-        {
-            layoutTexture.SetPixel(hallway.StartPositionAbsolute.x, hallway.StartPositionAbsolute.y, Color.red);
-        }
+        openDoorways.ForEach(
+            hallway => layoutTexture.SetPixel(
+                hallway.StartPositionAbsolute.x, 
+                hallway.StartPositionAbsolute.y, 
+                hallway.StartDirection.GetColor()));
 
         layoutTexture.SaveAsset();
     }
