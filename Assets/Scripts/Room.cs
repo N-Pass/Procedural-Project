@@ -4,7 +4,7 @@ using UnityEngine;
 public class Room
 {
     private RectInt area;
-    public RectInt Area { get { return area; } }
+    public RectInt Area => area;
 
     public Room(RectInt area)
     {
