@@ -93,6 +93,7 @@ public class LayoutGeneratorRooms : MonoBehaviour
         }
         Array.ForEach(level.Hallways, 
             hallway => layoutTexture.DrawLine(hallway.StartPositionAbsolute, hallway.EndPositionAbsolute, Color.white));
+        layoutTexture.ConvertToBlackAndWhite();
 
         if (isDebug)
         {

@@ -15,13 +15,20 @@ MonoBehaviour:
   width: 64
   length: 64
   roomTemplates:
-  - name: SpecialRoom2
+  - name: SpecialRoom5
     numberOfRooms: 1
     roomWidthMin: 15
     roomWidthMax: 20
     roomLengthMin: 15
     roomLengthMax: 20
-    layoutTexture: {fileID: 2800000, guid: 0e845474f4a8dc94881fbd09337fee73, type: 3}
+    layoutTexture: {fileID: 2800000, guid: 870f00937b6b10e4992b2f6cbb9d87e1, type: 3}
+  - name: SmallRooms
+    numberOfRooms: 8
+    roomWidthMin: 3
+    roomWidthMax: 5
+    roomLengthMin: 3
+    roomLengthMax: 5
+    layoutTexture: {fileID: 0}
   - name: SpecialRoom3
     numberOfRooms: 1
     roomWidthMin: 15
@@ -29,22 +36,22 @@ MonoBehaviour:
     roomLengthMin: 15
     roomLengthMax: 20
     layoutTexture: {fileID: 2800000, guid: a6ffe006df4099546adec8beb0815010, type: 3}
-  - name: SpecialRoom2
+  - name: SpecialRoom4
     numberOfRooms: 1
     roomWidthMin: 15
     roomWidthMax: 20
     roomLengthMin: 15
     roomLengthMax: 20
     layoutTexture: {fileID: 2800000, guid: 3523f8027a4296c40a4bf9d303ff282d, type: 3}
-  - name: SpecialRoom2
+  - name: SpecialRoom5
     numberOfRooms: 1
     roomWidthMin: 15
     roomWidthMax: 20
     roomLengthMin: 15
     roomLengthMax: 20
-    layoutTexture: {fileID: 0}
+    layoutTexture: {fileID: 2800000, guid: 870f00937b6b10e4992b2f6cbb9d87e1, type: 3}
   doorDistanceFromEdge: 1
-  minHallwayLength: 3
-  maxHallwayLength: 5
-  maxRoomCount: 16
-  minRoomDistance: 1
+  minHallwayLength: 2
+  maxHallwayLength: 4
+  maxRoomCount: 20
+  minRoomDistance: 2
