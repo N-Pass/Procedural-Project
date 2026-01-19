@@ -6,7 +6,6 @@ using Random = System.Random;
 
 public class LayoutGeneratorRooms : MonoBehaviour
 {
-    [SerializeField] private int seed = Environment.TickCount;
     [SerializeField] private RoomLevelLayoutConfiguration levelConfig;
         
     [SerializeField] private GameObject levelLayoutDisplay;
@@ -17,9 +16,10 @@ public class LayoutGeneratorRooms : MonoBehaviour
     private Dictionary<RoomTemplate, int> availableRooms;
 
     [ContextMenu("Generate Level layout")]
-    public void GenerateLevel()
+    public Level GenerateLevel()
     {
-        random = new Random(seed);
+        SharedLevelData.Instance.ResetRandom();
+        random = SharedLevelData.Instance.Rand;
         availableRooms = levelConfig.GetAvailiableRooms();
         openDoorways = new List<Hallway>();
         level = new Level(levelConfig.Width, levelConfig.Length);
@@ -33,15 +33,20 @@ public class LayoutGeneratorRooms : MonoBehaviour
         level.AddRoom(room);
 
         Hallway selectedEntryway = openDoorways[random.Next(0, openDoorways.Count)];
-        AddRooms();
-                
-        DrawLayout(selectedEntryway, roomRect);   
+        AddRooms();                
+        DrawLayout(selectedEntryway, roomRect);
+
+        int startRoomIndex = random.Next(0, level.Rooms.Length);
+        Room randomStartRoom = level.Rooms[startRoomIndex];
+        level.playerStartRoom = randomStartRoom;
+
+        return level;
     }
 
     [ContextMenu("Generate new Seed")]
     public void GenerateNewSeed()
     {
-        seed = Environment.TickCount;
+        SharedLevelData.Instance.GenerateSeed();
     }
 
     [ContextMenu("Generate new Seed and Level")]
@@ -77,7 +82,11 @@ public class LayoutGeneratorRooms : MonoBehaviour
         var layoutTexture = (Texture2D) renderer.sharedMaterial.mainTexture;
 
         layoutTexture.Reinitialize(level.Width, level.Length);
-        levelLayoutDisplay.transform.localScale = new Vector3(level.Width, level.Length, 1);
+        int scale = SharedLevelData.Instance.Scale;
+        levelLayoutDisplay.transform.localScale = new Vector3(level.Width * scale, level.Length * scale, 1);
+        float xPos = level.Width * scale / 2f - scale;
+        float zPos = level.Length * scale / 2f - scale;
+        levelLayoutDisplay.transform.position = new Vector3(xPos, 0.1f, zPos);
         layoutTexture.FillWithColor(Color.black);
 
         foreach (Room room in level.Rooms)

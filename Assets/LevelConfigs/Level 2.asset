@@ -36,6 +36,13 @@ MonoBehaviour:
     roomLengthMin: 5
     roomLengthMax: 6
     layoutTexture: {fileID: 0}
+  - name: LargeRoom
+    numberOfRooms: 3
+    roomWidthMin: 7
+    roomWidthMax: 12
+    roomLengthMin: 6
+    roomLengthMax: 10
+    layoutTexture: {fileID: 0}
   doorDistanceFromEdge: 1
   minHallwayLength: 3
   maxHallwayLength: 5
