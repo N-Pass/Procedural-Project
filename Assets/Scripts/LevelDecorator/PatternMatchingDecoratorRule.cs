@@ -11,6 +11,8 @@ public class PatternMatchingDecoratorRule : BaseDecoratorRule
     [SerializeField] private GameObject prefab;
     [SerializeField] private Array2DWrapper<TileType> placement;
     [SerializeField] private Array2DWrapper<TileType> fill;
+    [SerializeField] private bool centerHorizontally = false;
+    [SerializeField] private bool centerVertically = false;
 
     internal override bool CanBeApplied(TileType[,] levelDecorated, Room room)
     {
@@ -49,10 +51,23 @@ public class PatternMatchingDecoratorRule : BaseDecoratorRule
     private Vector2Int[] FindOccurrences(TileType[,] levelDecorated, Room room)
     {
         List<Vector2Int> occurences = new List<Vector2Int>();
+        
+        float centerX = room.Area.position.x + room.Area.width / 2f - placement.Width / 2f;
+        float centerY = room.Area.position.y + room.Area.height / 2f - placement.Height / 2f;
+
         for (int y = room.Area.position.y - 1; y < room.Area.position.y + room.Area.height + 2 - placement.Height; y++)
         {
             for(int x = room.Area.position.x - 1; x < room.Area.position.x + room.Area.width + 2 - placement.Width; x++)
             {
+                if(centerHorizontally && x != centerX)
+                {
+                    continue;
+                }
+                if(centerVertically && y != centerY) 
+                {
+                    continue; 
+                }
+
                 if(IsPatterAtPosition(levelDecorated, placement, x, y))
                 {
                     occurences.Add(new Vector2Int(x, y));
