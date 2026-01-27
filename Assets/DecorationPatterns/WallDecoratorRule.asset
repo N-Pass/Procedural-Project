@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acd2f98f482e81458b969748033204e, type: 3}
   m_Name: WallDecoratorRule
   m_EditorClassIdentifier: 
+  roomType: 129
   prefab: {fileID: 9060415352077695497, guid: 6e86f194e1582af48a5dbc9aee2b8ba3, type: 3}
+  prefabRotation: 0
   placement:
-    array: 020000000200000002000000040000000400000004000000
+    array: 000000000200000000000000040000000400000004000000
     width: 3
     height: 2
   fill:
-    array: 020000000200000002000000050000000500000005000000
+    array: 000000000200000000000000050000000500000005000000
     width: 3
     height: 2
+  centerHorizontally: 1
+  centerVertically: 0

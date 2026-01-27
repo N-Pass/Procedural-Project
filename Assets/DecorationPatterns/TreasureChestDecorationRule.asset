@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0acd2f98f482e81458b969748033204e, type: 3}
   m_Name: TreasureChestDecorationRule
   m_EditorClassIdentifier: 
+  roomType: 16
   prefab: {fileID: 9043201968713845679, guid: 7f49de4a1f6f62d4f8b2e1a2cf5bae58, type: 3}
+  prefabRotation: 0
   placement:
     array: 020000000200000002000000020000000200000002000000020000000200000002000000
     width: 3
