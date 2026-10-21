@@ -8,6 +8,24 @@ An educational Unity project developed while studying procedural level generatio
 
 The project explores the generation of dungeon layouts, room connections, environment geometry, decoration systems, and navigation.
 
+## Screenshots
+
+### Procedural dungeon layout
+
+![Procedural dungeon overview](Screenshots/Procedural-Map.png)
+
+### Another generated map
+
+![Different procedural map](Screenshots/Newly%20Generated%20Map.png)
+
+### Generated environment
+
+![Generated dungeon area](Screenshots/Newly%20Generated%20Area.png)
+
+### Player in the dungeon
+
+![Player navigating the generated map](Screenshots/PlayerInMap.png)
+
 ## Technical Features
 
 - **Procedural Room Generation:** Creates dungeon layouts using configurable room templates and corridors.
@@ -42,7 +60,9 @@ Course-guided work and any independently developed modifications should be disti
 
 ## Project Status
 
-Educational project. The repository has been reviewed at source-code level, but build execution and runtime behavior have not yet been independently verified.
+Educational project. The project was run and manually checked in the Unity Editor by the repository owner in October 2026. The owner reported that procedural maps continued to generate and that the player could navigate across the entire generated map, including rooms and corridors.
+
+A navigation issue was diagnosed using `NavMeshPathStatus` results (`PathComplete`, `PathPartial`, and `PathInvalid`), `NavMesh.SamplePosition`, and the Scene view NavMesh visualization. Switching the `NavMeshSurface` geometry source to **Physics Colliders** and disabling the auxiliary **Level Layout** GameObject yielded working room-to-corridor navigation in the tested configuration. These are owner-reported manual results, not automated test coverage or independent verification.
 
 ## Testing Opportunities
 
